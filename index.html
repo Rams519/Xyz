@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Dynamic Input Fields </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+    <div class="sidebar">
+      <nav class="navbar navbar-dark bg-color fixed-top">
+        <div class="container-fluid">
+
+          <button class="navbar-toggler add-btn" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation"
+            type="button">
+            <span class="add-item">Add Item</span>
+            <span class="add-btn__icon"><i class="fa-solid fa-bars"></i></span>
+          </button>
+
+          <a class="navbar-brand" href="#"><img src="img/logos.png" alt=""></a>
+          <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Form Builder</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 " id="modules">
+                <li class="nav-item draggable-item">
+                  <button href="#" class="add side-btn" onclick="addinput('name')">Input </button>
+                </li>
+                <li class="nav-item draggable-item">
+                   <button href="#" class="add side-btn" onclick="addinput('textarea')">Textarea </button>
+                </li>
+                <li class="nav-item draggable-item">
+                   <button href="#" class="add side-btn" onclick="addinput('email')">Email </button>
+                </li>
+                <li class="nav-item draggable-item">
+                   <button href="#" class="add side-btn" onclick="addinput('phone')">Phone</button>
+                </li>
+                <li class="nav-item draggable-item">
+                    <button href="#" class="add side-btn" onclick="addinput('dropdown')">Dropdown </button>
+                </li>
+                <li class="nav-item draggable-item">
+                    <button href="#" class="add side-btn" onclick="addinput('checkbox')">Check box </button>
+                </li>
+                <li class="nav-item draggable-item">
+                    <button href="#" class="add side-btn" onclick="addinput('radiobutton')">Radiobutton </button>
+                </li>
+                <li class="nav-item draggable-item">
+                    <button href="#" class="add side-btn" onclick="addinput('image')">Image </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="content-wrapper" id="main">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" id="element_wrapper">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-right">
+      <p>Copyright 2023 &copy; Ashutosh. all rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js" ></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+    <script src="script.js"></script>
+    <script>
+         $( init );
+
+function init() {
+  $( ".draggable-item" ).draggable({
+    // code
+    cursor: 'move',
+    containment: '.content-wrapper',
+    stack: '#main',
+    revert: true,
+    stop: handleDragStop
+  });
+  
+  $( ".card" ).droppable({
+    // code
+  
+    accept: ":not(.ui-sortable-helper)",
+    drop: handleDropEvent
+  }).sortable({
+      items: "div:not(.placeholder)",
+      sort: function() {
+       
+        $( this ).removeClass( "ui-state-default" );
+      }
+  });
+  
+  function handleDropEvent( event, ui ) {
+    var draggable = ui.draggable;
+  }
+};      
+    </script>
+   
+</body>
+
+</html>
